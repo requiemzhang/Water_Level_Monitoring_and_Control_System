@@ -1,0 +1,628 @@
+Analysis & Synthesis report for flood
+Thu Nov 28 15:15:51 2024
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Inverted Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for Inferred Entity Instance: show_math:u_show_math|lpm_divide:Mod0
+ 13. Parameter Settings for Inferred Entity Instance: show_math:u_show_math|lpm_divide:Div0
+ 14. Port Connectivity Checks: "ctr_control:u_ctr_control|pump_speed_control:e_pump_speed_control"
+ 15. Port Connectivity Checks: "ctr_control:u_ctr_control|key1_filter_module:uu_key1_filter_module"
+ 16. Port Connectivity Checks: "DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module"
+ 17. Port Connectivity Checks: "DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control"
+ 18. Port Connectivity Checks: "DotMatrixDisplay1:u_DotMatrixDisplay1|key1_filter_module:m_key1_filter_module"
+ 19. Port Connectivity Checks: "DotMatrixDisplay1:u_DotMatrixDisplay1"
+ 20. Port Connectivity Checks: "show_math:u_show_math|pump_speed_control:u_pump_speed_control|key1_filter_module:uu_key1_filter_module"
+ 21. Port Connectivity Checks: "show_math:u_show_math|pump_speed_control:u_pump_speed_control"
+ 22. Port Connectivity Checks: "DotMatrixDisplay:u_DotMatrixDisplay"
+ 23. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                 ;
++-----------------------------+------------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Thu Nov 28 15:15:51 2024          ;
+; Quartus Prime Version       ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name               ; flood                                          ;
+; Top-level Entity Name       ; flood                                          ;
+; Family                      ; MAX II                                         ;
+; Total logic elements        ; 222                                            ;
+; Total pins                  ; 50                                             ;
+; Total virtual pins          ; 0                                              ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                                  ;
++-----------------------------+------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EPM1270T144C5      ;                    ;
+; Top-level entity name                                            ; flood              ; flood              ;
+; Family name                                                      ; MAX II             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                      ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                  ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------+---------+
+; flood.v                          ; yes             ; User Verilog HDL File        ; D:/project(experiment)/flood(test)/flood.v                                    ;         ;
+; DotMatrixDisplay.v               ; yes             ; User Verilog HDL File        ; D:/project(experiment)/flood(test)/DotMatrixDisplay.v                         ;         ;
+; WaterLevelInput.v                ; yes             ; User Verilog HDL File        ; D:/project(experiment)/flood(test)/WaterLevelInput.v                          ;         ;
+; clk2hz.v                         ; yes             ; User Verilog HDL File        ; D:/project(experiment)/flood(test)/clk2hz.v                                   ;         ;
+; key1_filter_module.v             ; yes             ; User Verilog HDL File        ; D:/project(experiment)/flood(test)/key1_filter_module.v                       ;         ;
+; clk1hz.v                         ; yes             ; User Verilog HDL File        ; D:/project(experiment)/flood(test)/clk1hz.v                                   ;         ;
+; DotMatrixDisplay1.v              ; yes             ; User Verilog HDL File        ; D:/project(experiment)/flood(test)/DotMatrixDisplay1.v                        ;         ;
+; waterlevel.v                     ; yes             ; User Verilog HDL File        ; D:/project(experiment)/flood(test)/waterlevel.v                               ;         ;
+; ctr_control.v                    ; yes             ; User Verilog HDL File        ; D:/project(experiment)/flood(test)/ctr_control.v                              ;         ;
+; show_math.v                      ; yes             ; Auto-Found Verilog HDL File  ; D:/project(experiment)/flood(test)/show_math.v                                ;         ;
+; pump_speed_control.v             ; yes             ; Auto-Found Verilog HDL File  ; D:/project(experiment)/flood(test)/pump_speed_control.v                       ;         ;
+; buzzer.v                         ; yes             ; Auto-Found Verilog HDL File  ; D:/project(experiment)/flood(test)/buzzer.v                                   ;         ;
+; clk100hz.v                       ; yes             ; Auto-Found Verilog HDL File  ; D:/project(experiment)/flood(test)/clk100hz.v                                 ;         ;
+; clk250hz.v                       ; yes             ; Auto-Found Verilog HDL File  ; D:/project(experiment)/flood(test)/clk250hz.v                                 ;         ;
+; clk500hz.v                       ; yes             ; Auto-Found Verilog HDL File  ; D:/project(experiment)/flood(test)/clk500hz.v                                 ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal231.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc      ;         ;
+; db/lpm_divide_pnl.tdf            ; yes             ; Auto-Generated Megafunction  ; D:/project(experiment)/flood(test)/db/lpm_divide_pnl.tdf                      ;         ;
+; db/sign_div_unsign_7kh.tdf       ; yes             ; Auto-Generated Megafunction  ; D:/project(experiment)/flood(test)/db/sign_div_unsign_7kh.tdf                 ;         ;
+; db/alt_u_div_9ie.tdf             ; yes             ; Auto-Generated Megafunction  ; D:/project(experiment)/flood(test)/db/alt_u_div_9ie.tdf                       ;         ;
+; db/add_sub_e7c.tdf               ; yes             ; Auto-Generated Megafunction  ; D:/project(experiment)/flood(test)/db/add_sub_e7c.tdf                         ;         ;
+; db/add_sub_f7c.tdf               ; yes             ; Auto-Generated Megafunction  ; D:/project(experiment)/flood(test)/db/add_sub_f7c.tdf                         ;         ;
+; db/add_sub_g7c.tdf               ; yes             ; Auto-Generated Megafunction  ; D:/project(experiment)/flood(test)/db/add_sub_g7c.tdf                         ;         ;
+; db/add_sub_h7c.tdf               ; yes             ; Auto-Generated Megafunction  ; D:/project(experiment)/flood(test)/db/add_sub_h7c.tdf                         ;         ;
+; db/lpm_divide_mvl.tdf            ; yes             ; Auto-Generated Megafunction  ; D:/project(experiment)/flood(test)/db/lpm_divide_mvl.tdf                      ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Total logic elements                        ; 222   ;
+;     -- Combinational with no register       ; 101   ;
+;     -- Register only                        ; 33    ;
+;     -- Combinational with a register        ; 88    ;
+;                                             ;       ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 89    ;
+;     -- 3 input functions                    ; 25    ;
+;     -- 2 input functions                    ; 58    ;
+;     -- 1 input functions                    ; 15    ;
+;     -- 0 input functions                    ; 2     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 188   ;
+;     -- arithmetic mode                      ; 34    ;
+;     -- qfbk mode                            ; 0     ;
+;     -- register cascade mode                ; 0     ;
+;     -- synchronous clear/load mode          ; 6     ;
+;     -- asynchronous clear/load mode         ; 3     ;
+;                                             ;       ;
+; Total registers                             ; 121   ;
+; Total logic cells in carry chains           ; 42    ;
+; I/O pins                                    ; 50    ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 119   ;
+; Total fan-out                               ; 792   ;
+; Average fan-out                             ; 2.91  ;
++---------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                                               ;
++----------------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                         ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                                                                                                                ; Entity Name         ; Library Name ;
++----------------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |flood                                             ; 222 (33)    ; 121          ; 0          ; 50   ; 0            ; 101 (9)      ; 33 (16)           ; 88 (8)           ; 42 (0)          ; 0 (0)      ; |flood                                                                                                                                             ; flood               ; work         ;
+;    |Buzzer:u_Buzzer|                               ; 15 (6)      ; 9            ; 0          ; 0    ; 0            ; 6 (5)        ; 1 (0)             ; 8 (1)            ; 0 (0)           ; 0 (0)      ; |flood|Buzzer:u_Buzzer                                                                                                                             ; Buzzer              ; work         ;
+;       |clk100hz:u_clk_100hz|                       ; 5 (5)       ; 4            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 4 (4)            ; 0 (0)           ; 0 (0)      ; |flood|Buzzer:u_Buzzer|clk100hz:u_clk_100hz                                                                                                        ; clk100hz            ; work         ;
+;       |clk250hz:u_clk_250hz|                       ; 2 (2)       ; 2            ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |flood|Buzzer:u_Buzzer|clk250hz:u_clk_250hz                                                                                                        ; clk250hz            ; work         ;
+;       |clk500hz:u_clk_500hz|                       ; 2 (2)       ; 2            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 2 (2)            ; 0 (0)           ; 0 (0)      ; |flood|Buzzer:u_Buzzer|clk500hz:u_clk_500hz                                                                                                        ; clk500hz            ; work         ;
+;    |DotMatrixDisplay1:u_DotMatrixDisplay1|         ; 91 (51)     ; 45           ; 0          ; 0    ; 0            ; 46 (29)      ; 8 (0)             ; 37 (22)          ; 20 (4)          ; 0 (0)      ; |flood|DotMatrixDisplay1:u_DotMatrixDisplay1                                                                                                       ; DotMatrixDisplay1   ; work         ;
+;       |clk_1hz:u_clk_1hz|                          ; 24 (24)     ; 10           ; 0          ; 0    ; 0            ; 14 (14)      ; 4 (4)             ; 6 (6)            ; 10 (10)         ; 0 (0)      ; |flood|DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz                                                                                     ; clk_1hz             ; work         ;
+;       |pump_speed_control:e_pump_speed_control|    ; 2 (2)       ; 2            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 2 (2)            ; 0 (0)           ; 0 (0)      ; |flood|DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control                                                               ; pump_speed_control  ; work         ;
+;       |water_level:u_waterlevel|                   ; 14 (4)      ; 11           ; 0          ; 0    ; 0            ; 3 (0)        ; 4 (4)             ; 7 (0)            ; 6 (0)           ; 0 (0)      ; |flood|DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel                                                                              ; water_level         ; work         ;
+;          |key1_filter_module:m_key1_filter_module| ; 10 (10)     ; 7            ; 0          ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 7 (7)            ; 6 (6)           ; 0 (0)      ; |flood|DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module                                      ; key1_filter_module  ; work         ;
+;    |DotMatrixDisplay:u_DotMatrixDisplay|           ; 30 (12)     ; 17           ; 0          ; 0    ; 0            ; 13 (3)       ; 3 (2)             ; 14 (7)           ; 8 (0)           ; 0 (0)      ; |flood|DotMatrixDisplay:u_DotMatrixDisplay                                                                                                         ; DotMatrixDisplay    ; work         ;
+;       |clk_2hz:u_clk_2hz|                          ; 18 (18)     ; 8            ; 0          ; 0    ; 0            ; 10 (10)      ; 1 (1)             ; 7 (7)            ; 8 (8)           ; 0 (0)      ; |flood|DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz                                                                                       ; clk_2hz             ; work         ;
+;    |WaterLevelInput:u_WaterLevelInput|             ; 5 (5)       ; 5            ; 0          ; 0    ; 0            ; 0 (0)        ; 4 (4)             ; 1 (1)            ; 1 (1)           ; 0 (0)      ; |flood|WaterLevelInput:u_WaterLevelInput                                                                                                           ; WaterLevelInput     ; work         ;
+;    |ctr_control:u_ctr_control|                     ; 16 (12)     ; 9            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 9 (5)            ; 4 (4)           ; 0 (0)      ; |flood|ctr_control:u_ctr_control                                                                                                                   ; ctr_control         ; work         ;
+;       |water_level:u_waterlevel|                   ; 4 (4)       ; 4            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 4 (4)            ; 0 (0)           ; 0 (0)      ; |flood|ctr_control:u_ctr_control|water_level:u_waterlevel                                                                                          ; water_level         ; work         ;
+;    |show_math:u_show_math|                         ; 32 (23)     ; 12           ; 0          ; 0    ; 0            ; 20 (11)      ; 1 (1)             ; 11 (11)          ; 9 (0)           ; 0 (0)      ; |flood|show_math:u_show_math                                                                                                                       ; show_math           ; work         ;
+;       |lpm_divide:Div0|                            ; 4 (0)       ; 0            ; 0          ; 0    ; 0            ; 4 (0)        ; 0 (0)             ; 0 (0)            ; 4 (0)           ; 0 (0)      ; |flood|show_math:u_show_math|lpm_divide:Div0                                                                                                       ; lpm_divide          ; work         ;
+;          |lpm_divide_mvl:auto_generated|           ; 4 (0)       ; 0            ; 0          ; 0    ; 0            ; 4 (0)        ; 0 (0)             ; 0 (0)            ; 4 (0)           ; 0 (0)      ; |flood|show_math:u_show_math|lpm_divide:Div0|lpm_divide_mvl:auto_generated                                                                         ; lpm_divide_mvl      ; work         ;
+;             |sign_div_unsign_7kh:divider|          ; 4 (0)       ; 0            ; 0          ; 0    ; 0            ; 4 (0)        ; 0 (0)             ; 0 (0)            ; 4 (0)           ; 0 (0)      ; |flood|show_math:u_show_math|lpm_divide:Div0|lpm_divide_mvl:auto_generated|sign_div_unsign_7kh:divider                                             ; sign_div_unsign_7kh ; work         ;
+;                |alt_u_div_9ie:divider|             ; 4 (0)       ; 0            ; 0          ; 0    ; 0            ; 4 (0)        ; 0 (0)             ; 0 (0)            ; 4 (0)           ; 0 (0)      ; |flood|show_math:u_show_math|lpm_divide:Div0|lpm_divide_mvl:auto_generated|sign_div_unsign_7kh:divider|alt_u_div_9ie:divider                       ; alt_u_div_9ie       ; work         ;
+;                   |add_sub_h7c:add_sub_3|          ; 4 (4)       ; 0            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 0 (0)            ; 4 (4)           ; 0 (0)      ; |flood|show_math:u_show_math|lpm_divide:Div0|lpm_divide_mvl:auto_generated|sign_div_unsign_7kh:divider|alt_u_div_9ie:divider|add_sub_h7c:add_sub_3 ; add_sub_h7c         ; work         ;
+;       |lpm_divide:Mod0|                            ; 5 (0)       ; 0            ; 0          ; 0    ; 0            ; 5 (0)        ; 0 (0)             ; 0 (0)            ; 5 (0)           ; 0 (0)      ; |flood|show_math:u_show_math|lpm_divide:Mod0                                                                                                       ; lpm_divide          ; work         ;
+;          |lpm_divide_pnl:auto_generated|           ; 5 (0)       ; 0            ; 0          ; 0    ; 0            ; 5 (0)        ; 0 (0)             ; 0 (0)            ; 5 (0)           ; 0 (0)      ; |flood|show_math:u_show_math|lpm_divide:Mod0|lpm_divide_pnl:auto_generated                                                                         ; lpm_divide_pnl      ; work         ;
+;             |sign_div_unsign_7kh:divider|          ; 5 (0)       ; 0            ; 0          ; 0    ; 0            ; 5 (0)        ; 0 (0)             ; 0 (0)            ; 5 (0)           ; 0 (0)      ; |flood|show_math:u_show_math|lpm_divide:Mod0|lpm_divide_pnl:auto_generated|sign_div_unsign_7kh:divider                                             ; sign_div_unsign_7kh ; work         ;
+;                |alt_u_div_9ie:divider|             ; 5 (0)       ; 0            ; 0          ; 0    ; 0            ; 5 (0)        ; 0 (0)             ; 0 (0)            ; 5 (0)           ; 0 (0)      ; |flood|show_math:u_show_math|lpm_divide:Mod0|lpm_divide_pnl:auto_generated|sign_div_unsign_7kh:divider|alt_u_div_9ie:divider                       ; alt_u_div_9ie       ; work         ;
+;                   |add_sub_h7c:add_sub_3|          ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 5 (5)           ; 0 (0)      ; |flood|show_math:u_show_math|lpm_divide:Mod0|lpm_divide_pnl:auto_generated|sign_div_unsign_7kh:divider|alt_u_div_9ie:divider|add_sub_h7c:add_sub_3 ; add_sub_h7c         ; work         ;
++----------------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                                                                                      ;
++--------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+; Register name                                                                                          ; Reason for Removal                                                                                                             ;
++--------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+; DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[0]                                             ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[1]                                                         ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[3]                                             ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[2]                                                         ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[5]                                             ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[4]                                                         ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[7]                                             ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[6]                                                         ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[1]                                               ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[0]                                                           ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[3]                                               ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[2]                                                           ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[5]                                               ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[4]                                                           ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[7]                                               ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[6]                                                           ;
+; show_math:u_show_math|cat[4..6]                                                                        ; Merged with show_math:u_show_math|cat[3]                                                                                       ;
+; DotMatrixDisplay:u_DotMatrixDisplay|green_column_data[1..7]                                            ; Merged with DotMatrixDisplay:u_DotMatrixDisplay|green_column_data[0]                                                           ;
+; DotMatrixDisplay:u_DotMatrixDisplay|red_column_data[1..7]                                              ; Merged with DotMatrixDisplay:u_DotMatrixDisplay|red_column_data[0]                                                             ;
+; DotMatrixDisplay:u_DotMatrixDisplay|row_data[1]                                                        ; Merged with DotMatrixDisplay:u_DotMatrixDisplay|row_data[0]                                                                    ;
+; ctr_control:u_ctr_control|pump_speed_control:e_pump_speed_control|pump_speed[1]                        ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1]                        ;
+; show_math:u_show_math|pump_speed_control:u_pump_speed_control|pump_speed[1]                            ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1]                        ;
+; ctr_control:u_ctr_control|pump_speed_control:e_pump_speed_control|pump_speed[0]                        ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0]                        ;
+; show_math:u_show_math|pump_speed_control:u_pump_speed_control|pump_speed[0]                            ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0]                        ;
+; ctr_control:u_ctr_control|clk_1hz:u_clk_1hz|clk_out                                                    ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|clk_out                                                    ;
+; ctr_control:u_ctr_control|clk_1hz:u_clk_1hz|counter[9]                                                 ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[9]                                                 ;
+; ctr_control:u_ctr_control|clk_1hz:u_clk_1hz|counter[8]                                                 ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[8]                                                 ;
+; ctr_control:u_ctr_control|clk_1hz:u_clk_1hz|counter[7]                                                 ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[7]                                                 ;
+; ctr_control:u_ctr_control|clk_1hz:u_clk_1hz|counter[6]                                                 ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[6]                                                 ;
+; ctr_control:u_ctr_control|clk_1hz:u_clk_1hz|counter[5]                                                 ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[5]                                                 ;
+; ctr_control:u_ctr_control|clk_1hz:u_clk_1hz|counter[2]                                                 ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[2]                                                 ;
+; ctr_control:u_ctr_control|clk_1hz:u_clk_1hz|counter[1]                                                 ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[1]                                                 ;
+; ctr_control:u_ctr_control|clk_1hz:u_clk_1hz|counter[0]                                                 ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[0]                                                 ;
+; ctr_control:u_ctr_control|clk_1hz:u_clk_1hz|counter[10]                                                ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[10]                                                ;
+; ctr_control:u_ctr_control|clk_1hz:u_clk_1hz|counter[4]                                                 ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[4]                                                 ;
+; ctr_control:u_ctr_control|clk_1hz:u_clk_1hz|counter[3]                                                 ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[3]                                                 ;
+; ctr_control:u_ctr_control|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|stable_flag ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|stable_flag ;
+; ctr_control:u_ctr_control|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[4]    ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[4]    ;
+; ctr_control:u_ctr_control|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[3]    ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[3]    ;
+; ctr_control:u_ctr_control|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[2]    ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[2]    ;
+; ctr_control:u_ctr_control|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[0]    ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[0]    ;
+; ctr_control:u_ctr_control|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[5]    ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[5]    ;
+; ctr_control:u_ctr_control|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[1]    ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[1]    ;
+; show_math:u_show_math|cat[3]                                                                           ; Stuck at VCC due to stuck port data_in                                                                                         ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[6]                                               ; Stuck at GND due to stuck port data_in                                                                                         ;
+; Buzzer:u_Buzzer|clk250hz:u_clk_250hz|counter[2]                                                        ; Stuck at GND due to stuck port data_in                                                                                         ;
+; Buzzer:u_Buzzer|clk250hz:u_clk_250hz|counter[0]                                                        ; Merged with Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                                                    ;
+; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[0]                                                        ; Merged with Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                                                    ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[0]                                     ; Merged with Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                                                    ;
+; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[0]                                       ; Merged with Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                                                    ;
+; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[1]                                       ; Merged with DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[1]                                                 ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[1]                                     ; Merged with Buzzer:u_Buzzer|clk250hz:u_clk_250hz|counter[1]                                                                    ;
+; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[1]                                                        ; Stuck at GND due to stuck port data_in                                                                                         ;
+; Total Number of Removed Registers = 59                                                                 ;                                                                                                                                ;
++--------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 121   ;
+; Number of registers using Synchronous Clear  ; 6     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 3     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 30    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------+
+; Inverted Register Statistics                                ;
++---------------------------------------------------+---------+
+; Inverted Register                                 ; Fan out ;
++---------------------------------------------------+---------+
+; DotMatrixDisplay:u_DotMatrixDisplay|row_data[0]   ; 2       ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[0] ; 1       ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[1] ; 1       ;
+; DotMatrixDisplay:u_DotMatrixDisplay|row_data[2]   ; 1       ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[2] ; 1       ;
+; DotMatrixDisplay:u_DotMatrixDisplay|row_data[3]   ; 1       ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[3] ; 1       ;
+; DotMatrixDisplay:u_DotMatrixDisplay|row_data[4]   ; 1       ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[4] ; 1       ;
+; DotMatrixDisplay:u_DotMatrixDisplay|row_data[5]   ; 1       ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[5] ; 1       ;
+; DotMatrixDisplay:u_DotMatrixDisplay|row_data[6]   ; 1       ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[6] ; 1       ;
+; DotMatrixDisplay:u_DotMatrixDisplay|row_data[7]   ; 1       ;
+; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[7] ; 1       ;
+; ctr_control:u_ctr_control|water_level[2]          ; 4       ;
+; ctr_control:u_ctr_control|water_level[0]          ; 3       ;
+; ctr_control:u_ctr_control|water_level[3]          ; 3       ;
+; ctr_control:u_ctr_control|water_level[1]          ; 3       ;
+; Total number of inverted registers = 19           ;         ;
++---------------------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------+
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |flood|DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[5] ;
+; 8:1                ; 5 bits    ; 25 LEs        ; 10 LEs               ; 15 LEs                 ; Yes        ; |flood|show_math:u_show_math|seg_dot                                                                                   ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |flood|DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[2]                                                            ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |flood|DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[1]                                                      ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |flood|ctr_control:u_ctr_control|water_level[0]                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: show_math:u_show_math|lpm_divide:Mod0 ;
++------------------------+----------------+----------------------------------------------+
+; Parameter Name         ; Value          ; Type                                         ;
++------------------------+----------------+----------------------------------------------+
+; LPM_WIDTHN             ; 4              ; Untyped                                      ;
+; LPM_WIDTHD             ; 4              ; Untyped                                      ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                      ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                      ;
+; LPM_PIPELINE           ; 0              ; Untyped                                      ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                      ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                      ;
+; CBXI_PARAMETER         ; lpm_divide_pnl ; Untyped                                      ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                      ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                      ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                   ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                 ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                 ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                               ;
++------------------------+----------------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: show_math:u_show_math|lpm_divide:Div0 ;
++------------------------+----------------+----------------------------------------------+
+; Parameter Name         ; Value          ; Type                                         ;
++------------------------+----------------+----------------------------------------------+
+; LPM_WIDTHN             ; 4              ; Untyped                                      ;
+; LPM_WIDTHD             ; 4              ; Untyped                                      ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                      ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                      ;
+; LPM_PIPELINE           ; 0              ; Untyped                                      ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                      ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                      ;
+; CBXI_PARAMETER         ; lpm_divide_mvl ; Untyped                                      ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                      ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                      ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                   ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                 ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                 ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                               ;
++------------------------+----------------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ctr_control:u_ctr_control|pump_speed_control:e_pump_speed_control"                                                                          ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                      ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; clk  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ctr_control:u_ctr_control|key1_filter_module:uu_key1_filter_module"                                                                                 ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                                                                                      ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; stable_flag ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; reset       ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; press       ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module"                                       ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                                                      ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; reset ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; press ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control"                                                              ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                      ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; clk  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "DotMatrixDisplay1:u_DotMatrixDisplay1|key1_filter_module:m_key1_filter_module"                                                                      ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                                                                                      ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; stable_flag ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; reset       ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; press       ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "DotMatrixDisplay1:u_DotMatrixDisplay1"                                                                          ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                                                  ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; water_level ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "show_math:u_show_math|pump_speed_control:u_pump_speed_control|key1_filter_module:uu_key1_filter_module"                                             ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                                                                                      ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; stable_flag ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; reset       ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; press       ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "show_math:u_show_math|pump_speed_control:u_pump_speed_control"                                                                              ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                      ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; clk  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "DotMatrixDisplay:u_DotMatrixDisplay"                                                                                                        ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                      ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; rst  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Thu Nov 28 15:15:41 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off flood -c flood
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file flood.v
+    Info (12023): Found entity 1: flood File: D:/project(experiment)/flood(test)/flood.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file dotmatrixdisplay.v
+    Info (12023): Found entity 1: DotMatrixDisplay File: D:/project(experiment)/flood(test)/DotMatrixDisplay.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file waterlevelinput.v
+    Info (12023): Found entity 1: WaterLevelInput File: D:/project(experiment)/flood(test)/WaterLevelInput.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /project(experiment)/flood/clk2hz.v
+    Info (12023): Found entity 1: clk2hz File: D:/project(experiment)/flood/clk2hz.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file clk2hz.v
+    Info (12023): Found entity 1: clk_2hz File: D:/project(experiment)/flood(test)/clk2hz.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file key1_filter_module.v
+    Info (12023): Found entity 1: key1_filter_module File: D:/project(experiment)/flood(test)/key1_filter_module.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file clk1hz.v
+    Info (12023): Found entity 1: clk_1hz File: D:/project(experiment)/flood(test)/clk1hz.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file dotmatrixdisplay1.v
+    Info (12023): Found entity 1: DotMatrixDisplay1 File: D:/project(experiment)/flood(test)/DotMatrixDisplay1.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file waterlevel.v
+    Info (12023): Found entity 1: water_level File: D:/project(experiment)/flood(test)/waterlevel.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ctr_control.v
+    Info (12023): Found entity 1: ctr_control File: D:/project(experiment)/flood(test)/ctr_control.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file key1_filter_module_tb.v
+    Info (12023): Found entity 1: key1_filter_tb File: D:/project(experiment)/flood(test)/key1_filter_module_tb.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file tb_dotmatrixdisplay1.v
+    Info (12023): Found entity 1: tb_DotMatrixDisplay1 File: D:/project(experiment)/flood(test)/tb_DotMatrixDisplay1.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file flood_tb.v
+    Info (12023): Found entity 1: flood_tb File: D:/project(experiment)/flood(test)/flood_tb.v Line: 1
+Info (12127): Elaborating entity "flood" for the top level hierarchy
+Info (12128): Elaborating entity "WaterLevelInput" for hierarchy "WaterLevelInput:u_WaterLevelInput" File: D:/project(experiment)/flood(test)/flood.v Line: 33
+Info (12128): Elaborating entity "DotMatrixDisplay" for hierarchy "DotMatrixDisplay:u_DotMatrixDisplay" File: D:/project(experiment)/flood(test)/flood.v Line: 43
+Info (12128): Elaborating entity "clk_2hz" for hierarchy "DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz" File: D:/project(experiment)/flood(test)/DotMatrixDisplay.v Line: 26
+Warning (10230): Verilog HDL assignment warning at clk2hz.v(17): truncated value with size 32 to match size of target (9) File: D:/project(experiment)/flood(test)/clk2hz.v Line: 17
+Warning (12125): Using design file show_math.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: show_math File: D:/project(experiment)/flood(test)/show_math.v Line: 1
+Info (12128): Elaborating entity "show_math" for hierarchy "show_math:u_show_math" File: D:/project(experiment)/flood(test)/flood.v Line: 55
+Warning (10230): Verilog HDL assignment warning at show_math.v(41): truncated value with size 32 to match size of target (4) File: D:/project(experiment)/flood(test)/show_math.v Line: 41
+Warning (10230): Verilog HDL assignment warning at show_math.v(42): truncated value with size 32 to match size of target (4) File: D:/project(experiment)/flood(test)/show_math.v Line: 42
+Warning (12125): Using design file pump_speed_control.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: pump_speed_control File: D:/project(experiment)/flood(test)/pump_speed_control.v Line: 1
+Info (12128): Elaborating entity "pump_speed_control" for hierarchy "show_math:u_show_math|pump_speed_control:u_pump_speed_control" File: D:/project(experiment)/flood(test)/show_math.v Line: 25
+Warning (10230): Verilog HDL assignment warning at pump_speed_control.v(24): truncated value with size 32 to match size of target (2) File: D:/project(experiment)/flood(test)/pump_speed_control.v Line: 24
+Info (12128): Elaborating entity "key1_filter_module" for hierarchy "show_math:u_show_math|pump_speed_control:u_pump_speed_control|key1_filter_module:uu_key1_filter_module" File: D:/project(experiment)/flood(test)/pump_speed_control.v Line: 10
+Warning (12125): Using design file buzzer.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: Buzzer File: D:/project(experiment)/flood(test)/buzzer.v Line: 1
+Info (12128): Elaborating entity "Buzzer" for hierarchy "Buzzer:u_Buzzer" File: D:/project(experiment)/flood(test)/flood.v Line: 60
+Warning (12125): Using design file clk100hz.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: clk100hz File: D:/project(experiment)/flood(test)/clk100hz.v Line: 3
+Info (12128): Elaborating entity "clk100hz" for hierarchy "Buzzer:u_Buzzer|clk100hz:u_clk_100hz" File: D:/project(experiment)/flood(test)/buzzer.v Line: 17
+Warning (10230): Verilog HDL assignment warning at clk100hz.v(17): truncated value with size 32 to match size of target (4) File: D:/project(experiment)/flood(test)/clk100hz.v Line: 17
+Warning (12125): Using design file clk250hz.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: clk250hz File: D:/project(experiment)/flood(test)/clk250hz.v Line: 3
+Info (12128): Elaborating entity "clk250hz" for hierarchy "Buzzer:u_Buzzer|clk250hz:u_clk_250hz" File: D:/project(experiment)/flood(test)/buzzer.v Line: 22
+Warning (10230): Verilog HDL assignment warning at clk250hz.v(17): truncated value with size 32 to match size of target (3) File: D:/project(experiment)/flood(test)/clk250hz.v Line: 17
+Warning (12125): Using design file clk500hz.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: clk500hz File: D:/project(experiment)/flood(test)/clk500hz.v Line: 3
+Info (12128): Elaborating entity "clk500hz" for hierarchy "Buzzer:u_Buzzer|clk500hz:u_clk_500hz" File: D:/project(experiment)/flood(test)/buzzer.v Line: 27
+Warning (10230): Verilog HDL assignment warning at clk500hz.v(17): truncated value with size 32 to match size of target (2) File: D:/project(experiment)/flood(test)/clk500hz.v Line: 17
+Info (12128): Elaborating entity "DotMatrixDisplay1" for hierarchy "DotMatrixDisplay1:u_DotMatrixDisplay1" File: D:/project(experiment)/flood(test)/flood.v Line: 69
+Warning (10230): Verilog HDL assignment warning at DotMatrixDisplay1.v(183): truncated value with size 32 to match size of target (3) File: D:/project(experiment)/flood(test)/DotMatrixDisplay1.v Line: 183
+Warning (10230): Verilog HDL assignment warning at DotMatrixDisplay1.v(192): truncated value with size 32 to match size of target (8) File: D:/project(experiment)/flood(test)/DotMatrixDisplay1.v Line: 192
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "red_frames" into its bus
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "green_frames" into its bus
+Info (12128): Elaborating entity "water_level" for hierarchy "DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel" File: D:/project(experiment)/flood(test)/DotMatrixDisplay1.v Line: 42
+Info (12128): Elaborating entity "clk_1hz" for hierarchy "DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz" File: D:/project(experiment)/flood(test)/DotMatrixDisplay1.v Line: 49
+Warning (10230): Verilog HDL assignment warning at clk1hz.v(18): truncated value with size 32 to match size of target (11) File: D:/project(experiment)/flood(test)/clk1hz.v Line: 18
+Info (12128): Elaborating entity "ctr_control" for hierarchy "ctr_control:u_ctr_control" File: D:/project(experiment)/flood(test)/flood.v Line: 75
+Info (278001): Inferred 2 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "show_math:u_show_math|Mod0" File: D:/project(experiment)/flood(test)/show_math.v Line: 42
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "show_math:u_show_math|Div0" File: D:/project(experiment)/flood(test)/show_math.v Line: 41
+Info (12130): Elaborated megafunction instantiation "show_math:u_show_math|lpm_divide:Mod0" File: D:/project(experiment)/flood(test)/show_math.v Line: 42
+Info (12133): Instantiated megafunction "show_math:u_show_math|lpm_divide:Mod0" with the following parameter: File: D:/project(experiment)/flood(test)/show_math.v Line: 42
+    Info (12134): Parameter "LPM_WIDTHN" = "4"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_pnl.tdf
+    Info (12023): Found entity 1: lpm_divide_pnl File: D:/project(experiment)/flood(test)/db/lpm_divide_pnl.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_7kh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_7kh File: D:/project(experiment)/flood(test)/db/sign_div_unsign_7kh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_9ie.tdf
+    Info (12023): Found entity 1: alt_u_div_9ie File: D:/project(experiment)/flood(test)/db/alt_u_div_9ie.tdf Line: 31
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_e7c.tdf
+    Info (12023): Found entity 1: add_sub_e7c File: D:/project(experiment)/flood(test)/db/add_sub_e7c.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_f7c.tdf
+    Info (12023): Found entity 1: add_sub_f7c File: D:/project(experiment)/flood(test)/db/add_sub_f7c.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_g7c.tdf
+    Info (12023): Found entity 1: add_sub_g7c File: D:/project(experiment)/flood(test)/db/add_sub_g7c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_h7c.tdf
+    Info (12023): Found entity 1: add_sub_h7c File: D:/project(experiment)/flood(test)/db/add_sub_h7c.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "show_math:u_show_math|lpm_divide:Div0" File: D:/project(experiment)/flood(test)/show_math.v Line: 41
+Info (12133): Instantiated megafunction "show_math:u_show_math|lpm_divide:Div0" with the following parameter: File: D:/project(experiment)/flood(test)/show_math.v Line: 41
+    Info (12134): Parameter "LPM_WIDTHN" = "4"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_mvl.tdf
+    Info (12023): Found entity 1: lpm_divide_mvl File: D:/project(experiment)/flood(test)/db/lpm_divide_mvl.tdf Line: 25
+Warning (12241): 9 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "cat[3]" is stuck at VCC File: D:/project(experiment)/flood(test)/flood.v Line: 10
+    Warning (13410): Pin "cat[4]" is stuck at VCC File: D:/project(experiment)/flood(test)/flood.v Line: 10
+    Warning (13410): Pin "cat[5]" is stuck at VCC File: D:/project(experiment)/flood(test)/flood.v Line: 10
+    Warning (13410): Pin "cat[6]" is stuck at VCC File: D:/project(experiment)/flood(test)/flood.v Line: 10
+Info (21057): Implemented 272 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 9 input pins
+    Info (21059): Implemented 41 output pins
+    Info (21061): Implemented 222 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 23 warnings
+    Info: Peak virtual memory: 4735 megabytes
+    Info: Processing ended: Thu Nov 28 15:15:51 2024
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:12
+
+

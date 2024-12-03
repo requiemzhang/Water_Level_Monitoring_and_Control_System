@@ -1,0 +1,617 @@
+Timing Analyzer report for flood
+Thu Nov 28 15:16:00 2024
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Fmax Summary
+  6. Setup Summary
+  7. Hold Summary
+  8. Recovery Summary
+  9. Removal Summary
+ 10. Minimum Pulse Width Summary
+ 11. Setup: 'clk'
+ 12. Setup: 'btn7'
+ 13. Hold: 'clk'
+ 14. Hold: 'btn7'
+ 15. Setup Transfers
+ 16. Hold Transfers
+ 17. Report TCCS
+ 18. Report RSKM
+ 19. Unconstrained Paths Summary
+ 20. Clock Status Summary
+ 21. Unconstrained Input Ports
+ 22. Unconstrained Output Ports
+ 23. Unconstrained Input Ports
+ 24. Unconstrained Output Ports
+ 25. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++--------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                        ;
++-----------------------+--------------------------------------------------------+
+; Quartus Prime Version ; Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Timing Analyzer       ; Legacy Timing Analyzer                                 ;
+; Revision Name         ; flood                                                  ;
+; Device Family         ; MAX II                                                 ;
+; Device Name           ; EPM1270T144C5                                          ;
+; Timing Models         ; Final                                                  ;
+; Delay Model           ; Slow Model                                             ;
+; Rise/Fall Delays      ; Unavailable                                            ;
++-----------------------+--------------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                           ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+----------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets  ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+----------+
+; btn7       ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { btn7 } ;
+; clk        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk }  ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+----------+
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Fmax Summary                                                                                              ;
++------------+-----------------+------------+---------------------------------------------------------------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note                                                          ;
++------------+-----------------+------------+---------------------------------------------------------------+
+; 114.57 MHz ; 114.57 MHz      ; clk        ;                                                               ;
+; 394.01 MHz ; 304.04 MHz      ; btn7       ; limit due to minimum period restriction (max I/O toggle rate) ;
++------------+-----------------+------------+---------------------------------------------------------------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++--------------------------------+
+; Setup Summary                  ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; clk   ; -8.156 ; -527.321      ;
+; btn7  ; -1.538 ; -3.058        ;
++-------+--------+---------------+
+
+
++-------------------------------+
+; Hold Summary                  ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk   ; 1.646 ; 0.000         ;
+; btn7  ; 1.706 ; 0.000         ;
++-------+-------+---------------+
+
+
+--------------------
+; Recovery Summary ;
+--------------------
+No paths to report.
+
+
+-------------------
+; Removal Summary ;
+-------------------
+No paths to report.
+
+
++--------------------------------+
+; Minimum Pulse Width Summary    ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; btn7  ; -2.289 ; -2.289        ;
+; clk   ; -2.289 ; -2.289        ;
++-------+--------+---------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'clk'                                                                                                                                                                                                                                    ;
++--------+---------------------------------------------------------------------------------------------+--------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                                                                                   ; To Node                                                            ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------------------------------------------------------------------+--------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -8.156 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; ctr_control:u_ctr_control|water_level[3]                           ; btn7         ; clk         ; 1.000        ; -3.520     ; 5.303      ;
+; -8.142 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[2]               ; btn7         ; clk         ; 1.000        ; -3.520     ; 5.289      ;
+; -8.140 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[3]               ; btn7         ; clk         ; 1.000        ; -3.520     ; 5.287      ;
+; -8.007 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; ctr_control:u_ctr_control|water_level[2]                           ; btn7         ; clk         ; 1.000        ; -3.520     ; 5.154      ;
+; -7.886 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; ctr_control:u_ctr_control|water_level[2]                           ; btn7         ; clk         ; 1.000        ; -3.520     ; 5.033      ;
+; -7.876 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; ctr_control:u_ctr_control|water_level[1]                           ; btn7         ; clk         ; 1.000        ; -3.520     ; 5.023      ;
+; -7.789 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[3]               ; btn7         ; clk         ; 1.000        ; -3.520     ; 4.936      ;
+; -7.779 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; ctr_control:u_ctr_control|water_level[3]                           ; btn7         ; clk         ; 1.000        ; -3.520     ; 4.926      ;
+; -7.766 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[2]               ; btn7         ; clk         ; 1.000        ; -3.520     ; 4.913      ;
+; -7.762 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[1]               ; btn7         ; clk         ; 1.000        ; -3.520     ; 4.909      ;
+; -7.728 ; WaterLevelInput:u_WaterLevelInput|water_level_int[1]                                        ; show_math:u_show_math|bin[1]                                       ; clk          ; clk         ; 1.000        ; 0.000      ; 8.395      ;
+; -7.536 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; ctr_control:u_ctr_control|ctr                                      ; btn7         ; clk         ; 1.000        ; -3.520     ; 4.683      ;
+; -7.445 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[0]               ; btn7         ; clk         ; 1.000        ; -3.520     ; 4.592      ;
+; -7.310 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; ctr_control:u_ctr_control|water_level[0]                           ; btn7         ; clk         ; 1.000        ; -3.520     ; 4.457      ;
+; -7.265 ; WaterLevelInput:u_WaterLevelInput|water_level_int[1]                                        ; show_math:u_show_math|bin[3]                                       ; clk          ; clk         ; 1.000        ; 0.000      ; 7.932      ;
+; -7.225 ; WaterLevelInput:u_WaterLevelInput|water_level_int[1]                                        ; show_math:u_show_math|bin[2]                                       ; clk          ; clk         ; 1.000        ; 0.000      ; 7.892      ;
+; -7.159 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; ctr_control:u_ctr_control|ctr                                      ; btn7         ; clk         ; 1.000        ; -3.520     ; 4.306      ;
+; -7.153 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; ctr_control:u_ctr_control|water_level[1]                           ; btn7         ; clk         ; 1.000        ; -3.520     ; 4.300      ;
+; -7.099 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[1]               ; btn7         ; clk         ; 1.000        ; -3.520     ; 4.246      ;
+; -7.069 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[0]               ; btn7         ; clk         ; 1.000        ; -3.520     ; 4.216      ;
+; -6.974 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; show_math:u_show_math|bin[0]                                       ; btn7         ; clk         ; 1.000        ; -3.520     ; 4.121      ;
+; -6.909 ; WaterLevelInput:u_WaterLevelInput|water_level_int[3]                                        ; show_math:u_show_math|bin[1]                                       ; clk          ; clk         ; 1.000        ; 0.000      ; 7.576      ;
+; -6.686 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; ctr_control:u_ctr_control|water_level[0]                           ; btn7         ; clk         ; 1.000        ; -3.520     ; 3.833      ;
+; -6.323 ; WaterLevelInput:u_WaterLevelInput|water_level_int[2]                                        ; show_math:u_show_math|bin[1]                                       ; clk          ; clk         ; 1.000        ; 0.000      ; 6.990      ;
+; -6.207 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[2]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[4]           ; clk          ; clk         ; 1.000        ; 0.000      ; 6.874      ;
+; -6.201 ; WaterLevelInput:u_WaterLevelInput|water_level_int[1]                                        ; Buzzer:u_Buzzer|Beep                                               ; clk          ; clk         ; 1.000        ; 0.000      ; 6.868      ;
+; -6.172 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[0]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[4]           ; clk          ; clk         ; 1.000        ; 0.000      ; 6.839      ;
+; -6.092 ; WaterLevelInput:u_WaterLevelInput|water_level_int[2]                                        ; green_column_data[3]~reg0                                          ; clk          ; clk         ; 1.000        ; 0.000      ; 6.759      ;
+; -6.090 ; WaterLevelInput:u_WaterLevelInput|water_level_int[2]                                        ; green_column_data[1]~reg0                                          ; clk          ; clk         ; 1.000        ; 0.000      ; 6.757      ;
+; -6.070 ; WaterLevelInput:u_WaterLevelInput|water_level_int[2]                                        ; green_column_data[7]~reg0                                          ; clk          ; clk         ; 1.000        ; 0.000      ; 6.737      ;
+; -6.066 ; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                             ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[8]   ; clk          ; clk         ; 1.000        ; 0.000      ; 6.733      ;
+; -6.024 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[0]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[4]           ; clk          ; clk         ; 1.000        ; 0.000      ; 6.691      ;
+; -5.960 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[1]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[0]           ; clk          ; clk         ; 1.000        ; 0.000      ; 6.627      ;
+; -5.937 ; Buzzer:u_Buzzer|clk250hz:u_clk_250hz|counter[1]                                             ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[8]   ; clk          ; clk         ; 1.000        ; 0.000      ; 6.604      ;
+; -5.923 ; WaterLevelInput:u_WaterLevelInput|water_level_int[2]                                        ; red_column_data[1]~reg0                                            ; clk          ; clk         ; 1.000        ; 0.000      ; 6.590      ;
+; -5.923 ; WaterLevelInput:u_WaterLevelInput|water_level_int[2]                                        ; green_column_data[5]~reg0                                          ; clk          ; clk         ; 1.000        ; 0.000      ; 6.590      ;
+; -5.898 ; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                             ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[6]   ; clk          ; clk         ; 1.000        ; 0.000      ; 6.565      ;
+; -5.898 ; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                             ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[7]   ; clk          ; clk         ; 1.000        ; 0.000      ; 6.565      ;
+; -5.887 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[1]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[2]               ; clk          ; clk         ; 1.000        ; 0.000      ; 6.554      ;
+; -5.885 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[1]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[3]               ; clk          ; clk         ; 1.000        ; 0.000      ; 6.552      ;
+; -5.882 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[2]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[2]           ; clk          ; clk         ; 1.000        ; 0.000      ; 6.549      ;
+; -5.878 ; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                             ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[9] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.545      ;
+; -5.869 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[1]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[4]           ; clk          ; clk         ; 1.000        ; 0.000      ; 6.536      ;
+; -5.860 ; WaterLevelInput:u_WaterLevelInput|water_level_int[2]                                        ; show_math:u_show_math|bin[3]                                       ; clk          ; clk         ; 1.000        ; 0.000      ; 6.527      ;
+; -5.857 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; show_math:u_show_math|bin[1]                                       ; btn7         ; clk         ; 1.000        ; -3.520     ; 3.004      ;
+; -5.818 ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[3]                          ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.485      ;
+; -5.772 ; WaterLevelInput:u_WaterLevelInput|water_level_int[3]                                        ; show_math:u_show_math|bin[3]                                       ; clk          ; clk         ; 1.000        ; 0.000      ; 6.439      ;
+; -5.769 ; Buzzer:u_Buzzer|clk250hz:u_clk_250hz|counter[1]                                             ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[6]   ; clk          ; clk         ; 1.000        ; 0.000      ; 6.436      ;
+; -5.769 ; Buzzer:u_Buzzer|clk250hz:u_clk_250hz|counter[1]                                             ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[7]   ; clk          ; clk         ; 1.000        ; 0.000      ; 6.436      ;
+; -5.759 ; WaterLevelInput:u_WaterLevelInput|water_level_int[3]                                        ; green_column_data[3]~reg0                                          ; clk          ; clk         ; 1.000        ; 0.000      ; 6.426      ;
+; -5.757 ; WaterLevelInput:u_WaterLevelInput|water_level_int[3]                                        ; green_column_data[1]~reg0                                          ; clk          ; clk         ; 1.000        ; 0.000      ; 6.424      ;
+; -5.753 ; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                             ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[4]   ; clk          ; clk         ; 1.000        ; 0.000      ; 6.420      ;
+; -5.737 ; WaterLevelInput:u_WaterLevelInput|water_level_int[3]                                        ; green_column_data[7]~reg0                                          ; clk          ; clk         ; 1.000        ; 0.000      ; 6.404      ;
+; -5.720 ; WaterLevelInput:u_WaterLevelInput|water_level_int[3]                                        ; Buzzer:u_Buzzer|Beep                                               ; clk          ; clk         ; 1.000        ; 0.000      ; 6.387      ;
+; -5.705 ; WaterLevelInput:u_WaterLevelInput|water_level_int[3]                                        ; show_math:u_show_math|bin[2]                                       ; clk          ; clk         ; 1.000        ; 0.000      ; 6.372      ;
+; -5.695 ; WaterLevelInput:u_WaterLevelInput|water_level_int[3]                                        ; show_math:u_show_math|bin[0]                                       ; clk          ; clk         ; 1.000        ; 0.000      ; 6.362      ;
+; -5.686 ; Buzzer:u_Buzzer|clk250hz:u_clk_250hz|counter[1]                                             ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[9] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.353      ;
+; -5.678 ; WaterLevelInput:u_WaterLevelInput|water_level_int[2]                                        ; red_column_data[5]~reg0                                            ; clk          ; clk         ; 1.000        ; 0.000      ; 6.345      ;
+; -5.674 ; WaterLevelInput:u_WaterLevelInput|water_level_int[2]                                        ; red_column_data[3]~reg0                                            ; clk          ; clk         ; 1.000        ; 0.000      ; 6.341      ;
+; -5.647 ; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                             ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.314      ;
+; -5.637 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[1]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[4]           ; clk          ; clk         ; 1.000        ; 0.000      ; 6.304      ;
+; -5.624 ; Buzzer:u_Buzzer|clk250hz:u_clk_250hz|counter[1]                                             ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[4]   ; clk          ; clk         ; 1.000        ; 0.000      ; 6.291      ;
+; -5.615 ; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                             ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[5]   ; clk          ; clk         ; 1.000        ; 0.000      ; 6.282      ;
+; -5.611 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[1]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[6]         ; clk          ; clk         ; 1.000        ; 0.000      ; 6.278      ;
+; -5.599 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[0]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[0]           ; clk          ; clk         ; 1.000        ; 0.000      ; 6.266      ;
+; -5.590 ; WaterLevelInput:u_WaterLevelInput|water_level_int[3]                                        ; red_column_data[1]~reg0                                            ; clk          ; clk         ; 1.000        ; 0.000      ; 6.257      ;
+; -5.590 ; WaterLevelInput:u_WaterLevelInput|water_level_int[3]                                        ; green_column_data[5]~reg0                                          ; clk          ; clk         ; 1.000        ; 0.000      ; 6.257      ;
+; -5.580 ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|clk_out                             ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[1]               ; clk          ; clk         ; 1.000        ; 0.000      ; 6.247      ;
+; -5.580 ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|clk_out                             ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[0]               ; clk          ; clk         ; 1.000        ; 0.000      ; 6.247      ;
+; -5.552 ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[5]                          ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.219      ;
+; -5.539 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[0]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[0]           ; clk          ; clk         ; 1.000        ; 0.000      ; 6.206      ;
+; -5.512 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[2]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[4]           ; clk          ; clk         ; 1.000        ; 0.000      ; 6.179      ;
+; -5.503 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[0]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[4]         ; clk          ; clk         ; 1.000        ; 0.000      ; 6.170      ;
+; -5.498 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[1]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[4]         ; clk          ; clk         ; 1.000        ; 0.000      ; 6.165      ;
+; -5.486 ; Buzzer:u_Buzzer|clk250hz:u_clk_250hz|counter[1]                                             ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[5]   ; clk          ; clk         ; 1.000        ; 0.000      ; 6.153      ;
+; -5.475 ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[2]                          ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[9] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.142      ;
+; -5.455 ; Buzzer:u_Buzzer|clk250hz:u_clk_250hz|counter[1]                                             ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[7] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.122      ;
+; -5.439 ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[3]                            ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[8]   ; clk          ; clk         ; 1.000        ; 0.000      ; 6.106      ;
+; -5.438 ; WaterLevelInput:u_WaterLevelInput|water_level_int[1]                                        ; show_math:u_show_math|bin[0]                                       ; clk          ; clk         ; 1.000        ; 0.000      ; 6.105      ;
+; -5.423 ; WaterLevelInput:u_WaterLevelInput|water_level_int[1]                                        ; DotMatrixDisplay:u_DotMatrixDisplay|red_column_data[0]             ; clk          ; clk         ; 1.000        ; 0.000      ; 6.090      ;
+; -5.423 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[0]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[4]         ; clk          ; clk         ; 1.000        ; 0.000      ; 6.090      ;
+; -5.411 ; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                             ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.078      ;
+; -5.404 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[3]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[6]         ; clk          ; clk         ; 1.000        ; 0.000      ; 6.071      ;
+; -5.378 ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[3]                          ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[9] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.045      ;
+; -5.363 ; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                             ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[6] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.030      ;
+; -5.345 ; WaterLevelInput:u_WaterLevelInput|water_level_int[3]                                        ; red_column_data[5]~reg0                                            ; clk          ; clk         ; 1.000        ; 0.000      ; 6.012      ;
+; -5.344 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[1]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[4]         ; clk          ; clk         ; 1.000        ; 0.000      ; 6.011      ;
+; -5.341 ; WaterLevelInput:u_WaterLevelInput|water_level_int[3]                                        ; red_column_data[3]~reg0                                            ; clk          ; clk         ; 1.000        ; 0.000      ; 6.008      ;
+; -5.340 ; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                             ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[8] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.007      ;
+; -5.330 ; ctr_control:u_ctr_control|water_level[2]                                                    ; ctr_control:u_ctr_control|water_level[3]                           ; clk          ; clk         ; 1.000        ; 0.000      ; 5.997      ;
+; -5.323 ; WaterLevelInput:u_WaterLevelInput|water_level_int[2]                                        ; green_column_data[0]~reg0                                          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.990      ;
+; -5.323 ; WaterLevelInput:u_WaterLevelInput|water_level_int[2]                                        ; green_column_data[2]~reg0                                          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.990      ;
+; -5.322 ; WaterLevelInput:u_WaterLevelInput|water_level_int[2]                                        ; green_column_data[6]~reg0                                          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.989      ;
+; -5.320 ; WaterLevelInput:u_WaterLevelInput|water_level_int[2]                                        ; green_column_data[4]~reg0                                          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.987      ;
+; -5.285 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[0]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[2]               ; clk          ; clk         ; 1.000        ; 0.000      ; 5.952      ;
+; -5.283 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[0]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[2]           ; clk          ; clk         ; 1.000        ; 0.000      ; 5.950      ;
+; -5.283 ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[3]                          ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[8] ; clk          ; clk         ; 1.000        ; 0.000      ; 5.950      ;
+; -5.283 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[0]                                        ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[3]               ; clk          ; clk         ; 1.000        ; 0.000      ; 5.950      ;
+; -5.281 ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[3]                          ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[6] ; clk          ; clk         ; 1.000        ; 0.000      ; 5.948      ;
+; -5.280 ; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                             ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[2]   ; clk          ; clk         ; 1.000        ; 0.000      ; 5.947      ;
++--------+---------------------------------------------------------------------------------------------+--------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'btn7'                                                                                                                                                                                                                                                            ;
++--------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                                                                                   ; To Node                                                                                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -1.538 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; btn7         ; btn7        ; 1.000        ; 0.000      ; 2.205      ;
+; -1.520 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; btn7         ; btn7        ; 1.000        ; 0.000      ; 2.187      ;
+; -1.260 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; btn7         ; btn7        ; 1.000        ; 0.000      ; 1.927      ;
++--------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'clk'                                                                                                                                                                                                                                                                                                           ;
++-------+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                                                                                          ; To Node                                                                                                            ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 1.646 ; WaterLevelInput:u_WaterLevelInput|water_level_frac                                                                 ; show_math:u_show_math|bin[0]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 1.867      ;
+; 1.677 ; Buzzer:u_Buzzer|clk250hz:u_clk_250hz|clk_out                                                                       ; Buzzer:u_Buzzer|clk250hz:u_clk_250hz|clk_out                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 1.898      ;
+; 1.695 ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[1]                                                                    ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[1]                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 1.916      ;
+; 1.700 ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[1]                                                                    ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[3]                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 1.921      ;
+; 1.708 ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[1]                                                                    ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[2]                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 1.929      ;
+; 1.754 ; show_math:u_show_math|select[1]                                                                                    ; show_math:u_show_math|select[1]                                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 1.975      ;
+; 1.756 ; show_math:u_show_math|select[1]                                                                                    ; show_math:u_show_math|cat[0]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 1.977      ;
+; 1.756 ; show_math:u_show_math|select[1]                                                                                    ; show_math:u_show_math|cat[2]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 1.977      ;
+; 1.761 ; show_math:u_show_math|select[1]                                                                                    ; show_math:u_show_math|select[0]                                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 1.982      ;
+; 1.762 ; show_math:u_show_math|select[1]                                                                                    ; show_math:u_show_math|cat[7]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 1.983      ;
+; 1.765 ; show_math:u_show_math|select[1]                                                                                    ; show_math:u_show_math|select[2]                                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 1.986      ;
+; 1.765 ; show_math:u_show_math|select[1]                                                                                    ; show_math:u_show_math|seg_dot                                                                                      ; clk          ; clk         ; 0.000        ; 0.000      ; 1.986      ;
+; 1.904 ; DotMatrixDisplay:u_DotMatrixDisplay|row_data[5]                                                                    ; row_data[5]~reg0                                                                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.125      ;
+; 1.924 ; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[6]                                                                  ; row_data[6]~reg0                                                                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.145      ;
+; 1.925 ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[8]                                                 ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|clk_out                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.146      ;
+; 1.936 ; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                                                    ; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|counter[0]                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.157      ;
+; 1.953 ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[8]                                                   ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|clk_out                                                      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.174      ;
+; 1.974 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[0]                                                               ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[0]                                                               ; clk          ; clk         ; 0.000        ; 0.000      ; 2.195      ;
+; 1.976 ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[2]                                                                    ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[2]                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.197      ;
+; 1.991 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[1]                                                               ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[1]                                                               ; clk          ; clk         ; 0.000        ; 0.000      ; 2.212      ;
+; 1.991 ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[2]                                                                    ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[3]                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.212      ;
+; 1.994 ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[2]                                                                    ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[1]                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.215      ;
+; 2.006 ; show_math:u_show_math|select[0]                                                                                    ; show_math:u_show_math|select[0]                                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.227      ;
+; 2.008 ; show_math:u_show_math|select[0]                                                                                    ; show_math:u_show_math|cat[7]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.229      ;
+; 2.013 ; show_math:u_show_math|select[0]                                                                                    ; show_math:u_show_math|select[2]                                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.234      ;
+; 2.013 ; show_math:u_show_math|select[0]                                                                                    ; show_math:u_show_math|seg_dot                                                                                      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.234      ;
+; 2.015 ; show_math:u_show_math|select[0]                                                                                    ; show_math:u_show_math|select[1]                                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.236      ;
+; 2.016 ; show_math:u_show_math|select[0]                                                                                    ; show_math:u_show_math|cat[0]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.237      ;
+; 2.017 ; show_math:u_show_math|select[0]                                                                                    ; show_math:u_show_math|cat[2]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.238      ;
+; 2.056 ; ctr_control:u_ctr_control|water_level[1]                                                                           ; ctr_control:u_ctr_control|water_level:u_waterlevel|water_level[1]                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.277      ;
+; 2.107 ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|clk_out                                                                       ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|clk_out                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.328      ;
+; 2.109 ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[2]                                                 ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|clk_out                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.330      ;
+; 2.109 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|water_level[0]                                      ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[0]                                                               ; clk          ; clk         ; 0.000        ; 0.000      ; 2.330      ;
+; 2.112 ; DotMatrixDisplay:u_DotMatrixDisplay|row_data[7]                                                                    ; row_data[7]~reg0                                                                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.333      ;
+; 2.126 ; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[1]                                                                  ; row_data[1]~reg0                                                                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.347      ;
+; 2.128 ; DotMatrixDisplay:u_DotMatrixDisplay|row_data[4]                                                                    ; row_data[4]~reg0                                                                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.349      ;
+; 2.132 ; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[0]                                                                  ; row_data[0]~reg0                                                                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.353      ;
+; 2.136 ; DotMatrixDisplay:u_DotMatrixDisplay|row_data[2]                                                                    ; row_data[2]~reg0                                                                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.357      ;
+; 2.140 ; show_math:u_show_math|select[2]                                                                                    ; show_math:u_show_math|select[2]                                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.361      ;
+; 2.148 ; show_math:u_show_math|select[2]                                                                                    ; show_math:u_show_math|select[0]                                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.369      ;
+; 2.159 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[0]    ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[0]    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.380      ;
+; 2.159 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[1]    ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[1]    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.380      ;
+; 2.198 ; ctr_control:u_ctr_control|water_level[3]                                                                           ; ctr_control:u_ctr_control|water_level[3]                                                                           ; clk          ; clk         ; 0.000        ; 0.000      ; 2.419      ;
+; 2.216 ; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[4]                                                                  ; row_data[4]~reg0                                                                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.437      ;
+; 2.231 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|stable_flag ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|stable_flag ; clk          ; clk         ; 0.000        ; 0.000      ; 2.452      ;
+; 2.235 ; DotMatrixDisplay1:u_DotMatrixDisplay1|green_column_data[6]                                                         ; green_column_data[6]~reg0                                                                                          ; clk          ; clk         ; 0.000        ; 0.000      ; 2.456      ;
+; 2.242 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[2]    ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[2]    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.463      ;
+; 2.244 ; DotMatrixDisplay:u_DotMatrixDisplay|row_data[0]                                                                    ; row_data[0]~reg0                                                                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.465      ;
+; 2.251 ; DotMatrixDisplay:u_DotMatrixDisplay|row_data[0]                                                                    ; row_data[1]~reg0                                                                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.472      ;
+; 2.286 ; show_math:u_show_math|select[2]                                                                                    ; show_math:u_show_math|bin[3]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.507      ;
+; 2.286 ; show_math:u_show_math|select[2]                                                                                    ; show_math:u_show_math|cat[0]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.507      ;
+; 2.286 ; show_math:u_show_math|select[2]                                                                                    ; show_math:u_show_math|cat[1]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.507      ;
+; 2.286 ; show_math:u_show_math|select[2]                                                                                    ; show_math:u_show_math|cat[2]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.507      ;
+; 2.286 ; show_math:u_show_math|select[2]                                                                                    ; show_math:u_show_math|cat[7]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.507      ;
+; 2.286 ; show_math:u_show_math|select[2]                                                                                    ; show_math:u_show_math|seg_dot                                                                                      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.507      ;
+; 2.291 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[3]    ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[3]    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.512      ;
+; 2.292 ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[3]                                                                    ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[3]                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.513      ;
+; 2.294 ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[3]                                                                    ; Buzzer:u_Buzzer|clk100hz:u_clk_100hz|counter[1]                                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.515      ;
+; 2.299 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[4]    ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[4]    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.520      ;
+; 2.306 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[5]    ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module|cnt_s[5]    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.527      ;
+; 2.307 ; ctr_control:u_ctr_control|water_level:u_waterlevel|water_level[0]                                                  ; ctr_control:u_ctr_control|water_level[0]                                                                           ; clk          ; clk         ; 0.000        ; 0.000      ; 2.528      ;
+; 2.321 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[2]                                                               ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[2]                                                               ; clk          ; clk         ; 0.000        ; 0.000      ; 2.542      ;
+; 2.321 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[2]                                                               ; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[5]                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.542      ;
+; 2.325 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[2]                                                               ; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[7]                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.546      ;
+; 2.332 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[2]                                                               ; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[3]                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.553      ;
+; 2.333 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[2]                                                               ; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[2]                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.554      ;
+; 2.356 ; ctr_control:u_ctr_control|water_level[3]                                                                           ; ctr_control:u_ctr_control|water_level:u_waterlevel|water_level[3]                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.577      ;
+; 2.395 ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[3]                                                   ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[2]                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.616      ;
+; 2.401 ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[3]                                                   ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[5]                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.622      ;
+; 2.402 ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[3]                                                   ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[8]                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.623      ;
+; 2.496 ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[3]                                                   ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[6]                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.717      ;
+; 2.496 ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[3]                                                   ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[7]                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.717      ;
+; 2.530 ; ctr_control:u_ctr_control|water_level[1]                                                                           ; ctr_control:u_ctr_control|water_level[0]                                                                           ; clk          ; clk         ; 0.000        ; 0.000      ; 2.751      ;
+; 2.545 ; show_math:u_show_math|select[0]                                                                                    ; show_math:u_show_math|bin[1]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.766      ;
+; 2.547 ; show_math:u_show_math|select[0]                                                                                    ; show_math:u_show_math|bin[2]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.768      ;
+; 2.547 ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|counter[10]                                                ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|clk_out                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.768      ;
+; 2.547 ; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|clk_out                                                                       ; Buzzer:u_Buzzer|clk500hz:u_clk_500hz|clk_out                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.768      ;
+; 2.572 ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[8]                                                   ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[6]                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.793      ;
+; 2.574 ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[8]                                                   ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[7]                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.795      ;
+; 2.598 ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[3]                                                   ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|clk_out                                                      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.819      ;
+; 2.601 ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[3]                                                   ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[4]                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.822      ;
+; 2.621 ; ctr_control:u_ctr_control|water_level:u_waterlevel|water_level[1]                                                  ; ctr_control:u_ctr_control|water_level[1]                                                                           ; clk          ; clk         ; 0.000        ; 0.000      ; 2.842      ;
+; 2.622 ; ctr_control:u_ctr_control|water_level:u_waterlevel|water_level[3]                                                  ; ctr_control:u_ctr_control|water_level[3]                                                                           ; clk          ; clk         ; 0.000        ; 0.000      ; 2.843      ;
+; 2.625 ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|water_level[3]                                      ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level[3]                                                               ; clk          ; clk         ; 0.000        ; 0.000      ; 2.846      ;
+; 2.631 ; DotMatrixDisplay:u_DotMatrixDisplay|red_column_data[0]                                                             ; DotMatrixDisplay:u_DotMatrixDisplay|red_column_data[0]                                                             ; clk          ; clk         ; 0.000        ; 0.000      ; 2.852      ;
+; 2.634 ; DotMatrixDisplay1:u_DotMatrixDisplay1|row_data[3]                                                                  ; row_data[3]~reg0                                                                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.855      ;
+; 2.649 ; Buzzer:u_Buzzer|clk250hz:u_clk_250hz|counter[1]                                                                    ; DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz|clk_out                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.870      ;
+; 2.656 ; ctr_control:u_ctr_control|water_level[2]                                                                           ; ctr_control:u_ctr_control|water_level:u_waterlevel|water_level[2]                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.877      ;
+; 2.665 ; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[4]                                                           ; DotMatrixDisplay1:u_DotMatrixDisplay1|red_column_data[4]                                                           ; clk          ; clk         ; 0.000        ; 0.000      ; 2.886      ;
+; 2.667 ; show_math:u_show_math|select[2]                                                                                    ; show_math:u_show_math|bin[1]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.888      ;
+; 2.667 ; show_math:u_show_math|select[2]                                                                                    ; show_math:u_show_math|bin[2]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.888      ;
+; 2.672 ; DotMatrixDisplay:u_DotMatrixDisplay|row_data[6]                                                                    ; row_data[6]~reg0                                                                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.893      ;
+; 2.698 ; show_math:u_show_math|select[1]                                                                                    ; show_math:u_show_math|cat[1]                                                                                       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.919      ;
+; 2.742 ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[8]                                                   ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[8]                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.963      ;
+; 2.744 ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[8]                                                   ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[5]                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.965      ;
+; 2.744 ; ctr_control:u_ctr_control|water_level[3]                                                                           ; ctr_control:u_ctr_control|water_level[0]                                                                           ; clk          ; clk         ; 0.000        ; 0.000      ; 2.965      ;
+; 2.750 ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[8]                                                   ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[2]                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.971      ;
+; 2.751 ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[8]                                                   ; DotMatrixDisplay:u_DotMatrixDisplay|clk_2hz:u_clk_2hz|counter[4]                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.972      ;
+; 2.825 ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[0]                                                               ; DotMatrixDisplay1:u_DotMatrixDisplay1|current_row[1]                                                               ; clk          ; clk         ; 0.000        ; 0.000      ; 3.046      ;
+; 2.830 ; WaterLevelInput:u_WaterLevelInput|water_level_int[1]                                                               ; DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel|water_level[1]                                      ; clk          ; clk         ; 0.000        ; 0.000      ; 3.051      ;
++-------+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'btn7'                                                                                                                                                                                                                                                            ;
++-------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                                                                   ; To Node                                                                                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 1.706 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; btn7         ; btn7        ; 0.000        ; 0.000      ; 1.927      ;
+; 1.966 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; btn7         ; btn7        ; 0.000        ; 0.000      ; 2.187      ;
+; 1.984 ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[0] ; DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control|pump_speed[1] ; btn7         ; btn7        ; 0.000        ; 0.000      ; 2.205      ;
++-------+---------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; btn7       ; btn7     ; 3        ; 0        ; 0        ; 0        ;
+; btn7       ; clk      ; 44       ; 0        ; 0        ; 0        ;
+; clk        ; clk      ; 953      ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; btn7       ; btn7     ; 3        ; 0        ; 0        ; 0        ;
+; btn7       ; clk      ; 44       ; 0        ; 0        ; 0        ;
+; clk        ; clk      ; 953      ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 7     ; 7    ;
+; Unconstrained Input Port Paths  ; 24    ; 24   ;
+; Unconstrained Output Ports      ; 37    ; 37   ;
+; Unconstrained Output Port Paths ; 58    ; 58   ;
++---------------------------------+-------+------+
+
+
++-------------------------------------+
+; Clock Status Summary                ;
++--------+-------+------+-------------+
+; Target ; Clock ; Type ; Status      ;
++--------+-------+------+-------------+
+; btn7   ; btn7  ; Base ; Constrained ;
+; clk    ; clk   ; Base ; Constrained ;
++--------+-------+------+-------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; SW[0]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[1]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[2]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[3]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[4]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; btn0       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rst        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                                   ;
++----------------------+---------------------------------------------------------------------------------------+
+; Output Port          ; Comment                                                                               ;
++----------------------+---------------------------------------------------------------------------------------+
+; Beep                 ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; cat[0]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; cat[1]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; cat[2]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; cat[7]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[0] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[1] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[2] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[3] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[4] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[5] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[6] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[7] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[0]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[1]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[2]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[3]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[4]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[5]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[6]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[7]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[0]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[1]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[2]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[3]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[4]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[5]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[6]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[7]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg[0]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg[1]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg[2]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg[3]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg[4]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg[5]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg[6]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg_dot              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++----------------------+---------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; SW[0]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[1]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[2]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[3]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[4]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; btn0       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rst        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                                   ;
++----------------------+---------------------------------------------------------------------------------------+
+; Output Port          ; Comment                                                                               ;
++----------------------+---------------------------------------------------------------------------------------+
+; Beep                 ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; cat[0]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; cat[1]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; cat[2]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; cat[7]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[0] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[1] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[2] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[3] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[4] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[5] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[6] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; green_column_data[7] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[0]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[1]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[2]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[3]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[4]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[5]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[6]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; red_column_data[7]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[0]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[1]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[2]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[3]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[4]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[5]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[6]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; row_data[7]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg[0]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg[1]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg[2]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg[3]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg[4]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg[5]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg[6]               ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; seg_dot              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++----------------------+---------------------------------------------------------------------------------------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Thu Nov 28 15:15:58 2024
+Info: Command: quartus_sta flood -c flood
+Info: qsta_default_script.tcl version: #1
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'flood.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name clk clk
+    Info (332105): create_clock -period 1.000 -name btn7 btn7
+Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -8.156
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -8.156            -527.321 clk 
+    Info (332119):    -1.538              -3.058 btn7 
+Info (332146): Worst-case hold slack is 1.646
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     1.646               0.000 clk 
+    Info (332119):     1.706               0.000 btn7 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -2.289
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.289              -2.289 btn7 
+    Info (332119):    -2.289              -2.289 clk 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4685 megabytes
+    Info: Processing ended: Thu Nov 28 15:16:00 2024
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
+
+

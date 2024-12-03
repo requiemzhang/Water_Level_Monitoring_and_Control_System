@@ -1,0 +1,26 @@
+module ctr10(
+    input clk,
+	 input rst,
+	 input bnt0,
+	 output ctr1
+);
+
+    wire ctr;
+    reg ctr1;
+
+
+    //btn0消抖
+	 key1_filter_module u_key1_filter_module1(.clk(clk),
+	                                         .reset(rst),
+														  .btn0(btn0),
+														  .ctr(ctr));
+
+	  always @(posedge clk ) begin
+	      if (ctr==1'b1) begin
+	          ctr1<=ctr;
+		   end
+			else begin
+			    ctr1<=1'b0;
+		   end
+	  end
+endmodule

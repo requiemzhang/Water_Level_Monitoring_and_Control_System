@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at pump_speed_control.v(16): always construct contains both blocking and non-blocking assignments File: D:/project(experiment)/flood(test)/pump_speed_control.v Line: 16

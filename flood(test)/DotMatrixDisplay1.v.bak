@@ -1,0 +1,97 @@
+module DotMatrixDisplay (
+    input clk,                          // 时钟信号
+	 input rst,                          //复位信号
+    input [3:0] water_level_int,        // 水位信息，0-14米
+    output  reg [7:0] row_data,          // 行信号
+    output  reg [7:0] red_column_data,   // 红色列信号
+    output  reg [7:0] green_column_data, // 绿色列信号
+    input btn0,                         // 按键 bnt0 控制水泵
+    input btn7                          // 按键 7 控制抽水速度
+);	 
+	 
+	 
+	 wire clk1;
+	 wire ctr;
+    reg [3:0] water_level;  // 水位，存储水位信息
+	 wire [1:0] pump_speed;  // 水泵速度（慢、中、快）
+
+	 
+	 
+	 
+	 // 初始化水位显示和列数据
+    initial begin
+        row_data = 8'b11111111;
+        red_column_data = 8'b00000000;
+        green_column_data = 8'b00000000;
+    end
+
+	//btn0消抖
+	 key1_filter_module u_key1_filter_module(.clk(clk),
+	                                         .reset(rst),
+														  .btn0(btn0),
+														  .ctr(ctr));
+														  
+	 
+	 always @(posedge btn0 ) begin
+	     water_level <= water_level_int;
+	end
+	 
+	 // 实例化 1Hz 时钟信号生成模块
+    clk_1hz u_clk_1hz (
+        .clk(clk),
+        .clk_out(clk2)
+    );
+     
+		  
+		  
+	// 实例化 1Hz 时钟信号生成模块
+    clk_1hz u_clk_1hz (
+        .clk(clk),
+        .clk_out(clk2)
+    );
+
+	 
+	 
+	 
+	 always@(posedge clk1 ) begin
+	 if(ctr==1'b1)begin
+		  if (water_level > pump_speed)begin
+            water_level <= water_level - pump_speed;
+		  end
+        else
+             water_level <= 0; // 防止下溢
+		 end
+
+		  // 清空显示
+        row_data <= 8'b11111111;
+        red_column_data <= 8'b00000000;
+        green_column_data <= 8'b00000000;
+
+        // 根据水位设置显示内容
+        if (water_level == 1) begin
+            row_data <= 8'b11111100; // 点亮底部两行
+            green_column_data <= 8'b11111111; // 所有列亮绿色
+        end else if (water_level > 6 && water_level <= 8) begin
+            row_data <= 8'b11111000; // 点亮底部3行
+            green_column_data <= 8'b11111111;
+            red_column_data <= 8'b11111111;
+        end else if (water_level > 8 && water_level <= 10) begin
+            row_data <= 8'b11110000; // 点亮底部4行
+            green_column_data <= 8'b11111111;
+            red_column_data <= 8'b11111111;
+        end else if (water_level > 10 && water_level <= 12) begin
+            row_data <= 8'b11100000; // 点亮底部5行
+            green_column_data <= 8'b11111111;
+            red_column_data <= 8'b11111111;
+        end else if (water_level > 12 && water_level <= 13) begin
+            row_data <= 8'b11000000; // 点亮底部6行
+            red_column_data <= 8'b11111111; // 所有列亮红色
+        end else if (water_level > 13 && water_level <= 14) begin
+            row_data <= 8'b10000000; // 点亮底部7行
+            red_column_data <= 8'b11111111;
+        end
+		 end 
+	end
+endmodule
+
+	  

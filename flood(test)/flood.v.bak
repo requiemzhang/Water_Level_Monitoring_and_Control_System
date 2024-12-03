@@ -1,0 +1,24 @@
+module flood(
+    input clk,                          // 时钟信号
+	 input [4:0] SW,            // 水位输入（SW4~SW0）
+    output  [7:0] row_data,          // 行信号
+    output  [7:0] red_column_data,   // 红色列信号
+    output  [7:0] green_column_data  // 绿色列信号
+	 
+);
+    wire [3:0] water_level_int;        // 水位信息，0-14米
+	 wire water_level_frac;   // 水位小数部分
+    WaterLevelInput u_WaterLevelInput(.SW(SW),
+	                                   .clk(clk),
+												  .water_level_int(water_level_int),
+												  .water_level_frac(water_level_frac));
+	  
+	  
+	  
+	 DotMatrixDisplay u_DotMatrixDisplay (.clk(clk),
+	                                       .water_level_int(water_level_int),
+														.row_data(row_data),
+														.red_column_data(red_column_data),
+														.green_column_data(green_column_data));
+  
+endmodule
