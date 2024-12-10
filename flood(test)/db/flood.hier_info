@@ -47,7 +47,7 @@ cat[5] << show_math:u_show_math.cat
 cat[6] << show_math:u_show_math.cat
 cat[7] << show_math:u_show_math.cat
 seg_dot << show_math:u_show_math.seg_dot
-btn0 => btn0.IN2
+btn0 => btn0.IN3
 btn7 => btn7.IN3
 
 
@@ -161,33 +161,14 @@ clk_out <= clk_out~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |flood|show_math:u_show_math
-water_level_int[0] => Div0.IN7
-water_level_int[0] => Mod0.IN7
-water_level_int[1] => Div0.IN6
-water_level_int[1] => Mod0.IN6
-water_level_int[2] => Div0.IN5
-water_level_int[2] => Mod0.IN5
-water_level_int[3] => Div0.IN4
-water_level_int[3] => Mod0.IN4
-water_level_frac => bin.DATAB
-water_level_frac => bin.DATAB
-rst => rst.IN1
-clk => seg_dot~reg0.CLK
-clk => bin[0].CLK
-clk => bin[1].CLK
-clk => bin[2].CLK
-clk => bin[3].CLK
-clk => cat[0]~reg0.CLK
-clk => cat[1]~reg0.CLK
-clk => cat[2]~reg0.CLK
-clk => cat[3]~reg0.CLK
-clk => cat[4]~reg0.CLK
-clk => cat[5]~reg0.CLK
-clk => cat[6]~reg0.CLK
-clk => cat[7]~reg0.CLK
-clk => select[0].CLK
-clk => select[1].CLK
-clk => select[2].CLK
+water_level_int[0] => water_level_int[0].IN1
+water_level_int[1] => water_level_int[1].IN1
+water_level_int[2] => water_level_int[2].IN1
+water_level_int[3] => water_level_int[3].IN1
+water_level_frac => cnt0[0].DATAIN
+water_level_frac => cnt0[2].DATAIN
+rst => rst.IN2
+clk => clk.IN3
 seg[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
 seg[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
 seg[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
@@ -204,7 +185,206 @@ cat[4] <= cat[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 cat[5] <= cat[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 cat[6] <= cat[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 cat[7] <= cat[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+btn7 => btn7.IN2
+btn0 => btn0.IN2
+
+
+|flood|show_math:u_show_math|clk_1hz:u_clk_1hz
+clk => clk_out~reg0.CLK
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => counter[2].CLK
+clk => counter[3].CLK
+clk => counter[4].CLK
+clk => counter[5].CLK
+clk => counter[6].CLK
+clk => counter[7].CLK
+clk => counter[8].CLK
+clk => counter[9].CLK
+clk => counter[10].CLK
+clk_out <= clk_out~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|flood|show_math:u_show_math|water_level:u_waterlevel
+clk => clk.IN1
+water_level_int[0] => water_level[0]~reg0.DATAIN
+water_level_int[1] => water_level[1]~reg0.DATAIN
+water_level_int[2] => water_level[2]~reg0.DATAIN
+water_level_int[3] => water_level[3]~reg0.DATAIN
+water_level[0] <= water_level[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+water_level[1] <= water_level[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+water_level[2] <= water_level[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+water_level[3] <= water_level[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+btn0 => btn0.IN1
+
+
+|flood|show_math:u_show_math|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module
+clk => press~reg0.CLK
+clk => stable_flag~reg0.CLK
+clk => cnt_s[0].CLK
+clk => cnt_s[1].CLK
+clk => cnt_s[2].CLK
+clk => cnt_s[3].CLK
+clk => cnt_s[4].CLK
+clk => cnt_s[5].CLK
+reset => ctr~reg0.ACLR
+reset => press~reg0.ACLR
+reset => stable_flag~reg0.ACLR
+reset => cnt_s[0].ACLR
+reset => cnt_s[1].ACLR
+reset => cnt_s[2].ACLR
+reset => cnt_s[3].ACLR
+reset => cnt_s[4].ACLR
+reset => cnt_s[5].ACLR
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => always1.IN1
+btn => stable_flag.OUTPUTSELECT
+stable_flag <= stable_flag~reg0.DB_MAX_OUTPUT_PORT_TYPE
+press <= press~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ctr <= ctr~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|flood|show_math:u_show_math|ctr_control:u_ctr_control
+clk => clk.IN3
+rst => rst.IN1
+btn0 => btn0.IN2
 btn7 => btn7.IN1
+ctr <= ctr~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|flood|show_math:u_show_math|ctr_control:u_ctr_control|key1_filter_module:uu_key1_filter_module
+clk => press~reg0.CLK
+clk => stable_flag~reg0.CLK
+clk => cnt_s[0].CLK
+clk => cnt_s[1].CLK
+clk => cnt_s[2].CLK
+clk => cnt_s[3].CLK
+clk => cnt_s[4].CLK
+clk => cnt_s[5].CLK
+reset => ctr~reg0.ACLR
+reset => press~reg0.ACLR
+reset => stable_flag~reg0.ACLR
+reset => cnt_s[0].ACLR
+reset => cnt_s[1].ACLR
+reset => cnt_s[2].ACLR
+reset => cnt_s[3].ACLR
+reset => cnt_s[4].ACLR
+reset => cnt_s[5].ACLR
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => always1.IN1
+btn => stable_flag.OUTPUTSELECT
+stable_flag <= stable_flag~reg0.DB_MAX_OUTPUT_PORT_TYPE
+press <= press~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ctr <= ctr~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|flood|show_math:u_show_math|ctr_control:u_ctr_control|pump_speed_control:e_pump_speed_control
+clk => clk.IN1
+btn7 => btn7.IN1
+pump_speed[0] <= pump_speed[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pump_speed[1] <= pump_speed[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rst => ~NO_FANOUT~
+
+
+|flood|show_math:u_show_math|ctr_control:u_ctr_control|pump_speed_control:e_pump_speed_control|key1_filter_module:uu_key1_filter_module
+clk => press~reg0.CLK
+clk => stable_flag~reg0.CLK
+clk => cnt_s[0].CLK
+clk => cnt_s[1].CLK
+clk => cnt_s[2].CLK
+clk => cnt_s[3].CLK
+clk => cnt_s[4].CLK
+clk => cnt_s[5].CLK
+reset => ctr~reg0.ACLR
+reset => press~reg0.ACLR
+reset => stable_flag~reg0.ACLR
+reset => cnt_s[0].ACLR
+reset => cnt_s[1].ACLR
+reset => cnt_s[2].ACLR
+reset => cnt_s[3].ACLR
+reset => cnt_s[4].ACLR
+reset => cnt_s[5].ACLR
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => always1.IN1
+btn => stable_flag.OUTPUTSELECT
+stable_flag <= stable_flag~reg0.DB_MAX_OUTPUT_PORT_TYPE
+press <= press~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ctr <= ctr~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|flood|show_math:u_show_math|ctr_control:u_ctr_control|water_level:u_waterlevel
+clk => clk.IN1
+water_level_int[0] => water_level[0]~reg0.DATAIN
+water_level_int[1] => water_level[1]~reg0.DATAIN
+water_level_int[2] => water_level[2]~reg0.DATAIN
+water_level_int[3] => water_level[3]~reg0.DATAIN
+water_level[0] <= water_level[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+water_level[1] <= water_level[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+water_level[2] <= water_level[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+water_level[3] <= water_level[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+btn0 => btn0.IN1
+
+
+|flood|show_math:u_show_math|ctr_control:u_ctr_control|water_level:u_waterlevel|key1_filter_module:m_key1_filter_module
+clk => press~reg0.CLK
+clk => stable_flag~reg0.CLK
+clk => cnt_s[0].CLK
+clk => cnt_s[1].CLK
+clk => cnt_s[2].CLK
+clk => cnt_s[3].CLK
+clk => cnt_s[4].CLK
+clk => cnt_s[5].CLK
+reset => ctr~reg0.ACLR
+reset => press~reg0.ACLR
+reset => stable_flag~reg0.ACLR
+reset => cnt_s[0].ACLR
+reset => cnt_s[1].ACLR
+reset => cnt_s[2].ACLR
+reset => cnt_s[3].ACLR
+reset => cnt_s[4].ACLR
+reset => cnt_s[5].ACLR
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => cnt_s.OUTPUTSELECT
+btn => always1.IN1
+btn => stable_flag.OUTPUTSELECT
+stable_flag <= stable_flag~reg0.DB_MAX_OUTPUT_PORT_TYPE
+press <= press~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ctr <= ctr~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|flood|show_math:u_show_math|ctr_control:u_ctr_control|clk_1hz:u_clk_1hz
+clk => clk_out~reg0.CLK
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => counter[2].CLK
+clk => counter[3].CLK
+clk => counter[4].CLK
+clk => counter[5].CLK
+clk => counter[6].CLK
+clk => counter[7].CLK
+clk => counter[8].CLK
+clk => counter[9].CLK
+clk => counter[10].CLK
+clk_out <= clk_out~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |flood|show_math:u_show_math|pump_speed_control:u_pump_speed_control
@@ -224,6 +404,7 @@ clk => cnt_s[2].CLK
 clk => cnt_s[3].CLK
 clk => cnt_s[4].CLK
 clk => cnt_s[5].CLK
+reset => ctr~reg0.ACLR
 reset => press~reg0.ACLR
 reset => stable_flag~reg0.ACLR
 reset => cnt_s[0].ACLR
@@ -242,6 +423,7 @@ btn => always1.IN1
 btn => stable_flag.OUTPUTSELECT
 stable_flag <= stable_flag~reg0.DB_MAX_OUTPUT_PORT_TYPE
 press <= press~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ctr <= ctr~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |flood|Buzzer:u_Buzzer
@@ -345,6 +527,7 @@ clk => cnt_s[2].CLK
 clk => cnt_s[3].CLK
 clk => cnt_s[4].CLK
 clk => cnt_s[5].CLK
+reset => ctr~reg0.ACLR
 reset => press~reg0.ACLR
 reset => stable_flag~reg0.ACLR
 reset => cnt_s[0].ACLR
@@ -363,6 +546,7 @@ btn => always1.IN1
 btn => stable_flag.OUTPUTSELECT
 stable_flag <= stable_flag~reg0.DB_MAX_OUTPUT_PORT_TYPE
 press <= press~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ctr <= ctr~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |flood|DotMatrixDisplay1:u_DotMatrixDisplay1|pump_speed_control:e_pump_speed_control
@@ -382,6 +566,7 @@ clk => cnt_s[2].CLK
 clk => cnt_s[3].CLK
 clk => cnt_s[4].CLK
 clk => cnt_s[5].CLK
+reset => ctr~reg0.ACLR
 reset => press~reg0.ACLR
 reset => stable_flag~reg0.ACLR
 reset => cnt_s[0].ACLR
@@ -400,6 +585,7 @@ btn => always1.IN1
 btn => stable_flag.OUTPUTSELECT
 stable_flag <= stable_flag~reg0.DB_MAX_OUTPUT_PORT_TYPE
 press <= press~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ctr <= ctr~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |flood|DotMatrixDisplay1:u_DotMatrixDisplay1|water_level:u_waterlevel
@@ -424,6 +610,7 @@ clk => cnt_s[2].CLK
 clk => cnt_s[3].CLK
 clk => cnt_s[4].CLK
 clk => cnt_s[5].CLK
+reset => ctr~reg0.ACLR
 reset => press~reg0.ACLR
 reset => stable_flag~reg0.ACLR
 reset => cnt_s[0].ACLR
@@ -442,6 +629,7 @@ btn => always1.IN1
 btn => stable_flag.OUTPUTSELECT
 stable_flag <= stable_flag~reg0.DB_MAX_OUTPUT_PORT_TYPE
 press <= press~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ctr <= ctr~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |flood|DotMatrixDisplay1:u_DotMatrixDisplay1|clk_1hz:u_clk_1hz
@@ -477,6 +665,7 @@ clk => cnt_s[2].CLK
 clk => cnt_s[3].CLK
 clk => cnt_s[4].CLK
 clk => cnt_s[5].CLK
+reset => ctr~reg0.ACLR
 reset => press~reg0.ACLR
 reset => stable_flag~reg0.ACLR
 reset => cnt_s[0].ACLR
@@ -495,6 +684,7 @@ btn => always1.IN1
 btn => stable_flag.OUTPUTSELECT
 stable_flag <= stable_flag~reg0.DB_MAX_OUTPUT_PORT_TYPE
 press <= press~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ctr <= ctr~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |flood|ctr_control:u_ctr_control|pump_speed_control:e_pump_speed_control
@@ -514,6 +704,7 @@ clk => cnt_s[2].CLK
 clk => cnt_s[3].CLK
 clk => cnt_s[4].CLK
 clk => cnt_s[5].CLK
+reset => ctr~reg0.ACLR
 reset => press~reg0.ACLR
 reset => stable_flag~reg0.ACLR
 reset => cnt_s[0].ACLR
@@ -532,6 +723,7 @@ btn => always1.IN1
 btn => stable_flag.OUTPUTSELECT
 stable_flag <= stable_flag~reg0.DB_MAX_OUTPUT_PORT_TYPE
 press <= press~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ctr <= ctr~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |flood|ctr_control:u_ctr_control|water_level:u_waterlevel
@@ -556,6 +748,7 @@ clk => cnt_s[2].CLK
 clk => cnt_s[3].CLK
 clk => cnt_s[4].CLK
 clk => cnt_s[5].CLK
+reset => ctr~reg0.ACLR
 reset => press~reg0.ACLR
 reset => stable_flag~reg0.ACLR
 reset => cnt_s[0].ACLR
@@ -574,6 +767,7 @@ btn => always1.IN1
 btn => stable_flag.OUTPUTSELECT
 stable_flag <= stable_flag~reg0.DB_MAX_OUTPUT_PORT_TYPE
 press <= press~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ctr <= ctr~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |flood|ctr_control:u_ctr_control|clk_1hz:u_clk_1hz

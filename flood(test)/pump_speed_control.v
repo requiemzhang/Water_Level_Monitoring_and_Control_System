@@ -7,7 +7,7 @@ module pump_speed_control (
     wire press;
 	 key1_filter_module uu_key1_filter_module(.clk(clk),
 	                                          .btn(btn7),
-															.stable_flag(press));
+															.ctr(press));
 
 														  
 

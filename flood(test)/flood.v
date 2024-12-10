@@ -52,7 +52,8 @@ module flood(
                           .cat(cat),
 								  .seg_dot(seg_dot),
 								  .btn7(btn7),
-								  .rst(rst)); 
+								  .rst(rst),
+								  .btn0(btn0)); 
 								 
 	
 	 Buzzer u_Buzzer(.water_level_int(water_level_int),

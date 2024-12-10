@@ -3,7 +3,8 @@ module key1_filter_module(
     input reset,          // 异步复位信号
     input btn,            // 按钮输入
     output reg stable_flag, // 持续稳定信号
-    output reg press     // 按下的单周期脉冲信号
+    output reg press,    // 按下的单周期脉冲信号
+	  output reg ctr    
 );
     // 中间信号：稳定计数器
     reg [5:0] cnt_s;
@@ -50,6 +51,15 @@ module key1_filter_module(
         end
         else begin
             press <= 1'b0; // 其余时间保持低电平
+        end
+    end
+	 // 按键控制信号翻转
+    always @(posedge press or posedge reset) begin
+        if (reset == 1'b1) begin
+            ctr <= 1'b0;
+        end
+        else begin
+            ctr <= ~ctr;
         end
     end
 	 

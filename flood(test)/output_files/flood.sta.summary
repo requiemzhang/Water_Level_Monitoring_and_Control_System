@@ -3,19 +3,19 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Setup 'clk'
-Slack : -8.156
-TNS   : -527.321
+Slack : -9.227
+TNS   : -599.356
 
 Type  : Setup 'btn7'
-Slack : -1.538
-TNS   : -3.058
+Slack : -1.505
+TNS   : -3.004
 
 Type  : Hold 'clk'
 Slack : 1.646
 TNS   : 0.000
 
 Type  : Hold 'btn7'
-Slack : 1.706
+Slack : 1.677
 TNS   : 0.000
 
 Type  : Minimum Pulse Width 'btn7'

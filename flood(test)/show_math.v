@@ -6,7 +6,8 @@ module show_math (
     output reg [6:0] seg, // 七段数码管段位输出
 	 output reg seg_dot,
     output reg [7:0] cat,  // 位选控制信号
-	 input btn7                          // 按键 7 控制抽水速度
+	 input btn7,                          // 按键 7 控制抽水速度
+	 input btn0
 );
     
 	 reg [3:0] cnt0; // 小数位计数值
@@ -15,6 +16,33 @@ module show_math (
     reg [3:0] bin;       // 当前显示的数值
     reg [2:0] select;          // 位选信号，用于在个位和十位之间切换
 	 wire [1:0] pump_speed;  // 水泵速度（慢、中、快）
+	 wire ctr;
+	 wire [3:0] waterlevel;  // 水位，存储水位信息
+	 reg [3:0] water_level;      // 输出水位信号
+	 wire clk1;
+	 
+	 
+	 
+	 // 实例化 1Hz 时钟信号生成模块
+    clk_1hz u_clk_1hz (
+        .clk(clk),
+        .clk_out(clk1)
+    );
+	 
+	 
+	 
+	 //取出一个按下按键时water_level_int的值并保持不变													  
+	 water_level u_waterlevel(.clk(clk),
+	                         .water_level_int(water_level_int),   
+									 .water_level(waterlevel),
+									 .btn0(btn0));
+
+	 
+	 ctr_control	u_ctr_control(.clk(clk),
+		                          .rst(rst),
+										  .btn0(btn0),
+										  .btn7(btn7),
+										  .ctr(ctr));
     
 	 
 	  // 实例化水泵速度控制模块
@@ -24,24 +52,38 @@ module show_math (
 		  .rst(rst)
     );
 	 
-	 //定义小数部分
-	 always @(*) begin
-       if(water_level_frac==1) begin
-		 cnt0<=4'd5;
-		 end
-		 else begin
-		 cnt0<=4'd0;
-		 end
-    end
+	
 	 
 	 
+     always @(posedge clk ) begin
+	      if((ctr &(water_level_int >= 12)))begin
+			   if(btn0) begin
+		         water_level<=waterlevel;
+		      end
+		      else if(clk1) begin  
+		         if ((water_level - 6)> pump_speed)begin
+               water_level <= water_level - pump_speed;
+					cnt2 = water_level / 10;  // 十位数
+               cnt1 = water_level % 10;  // 个位数
+					
+		         end
+				end
+   
+		   end
+	      else begin
+			 cnt2 = water_level_int / 10;  // 十位数
+          cnt1 = water_level_int % 10;  // 个位数
+			 if(water_level_frac==1) begin
+		    cnt0<=4'd5;
+		    end
+		    else begin
+		    cnt0<=4'd0;
+		    end
+			
+		   end
+	end	
 	 
-	// 定义整数部分
-    always @(*) begin
-        cnt2 = water_level_int / 10;  // 十位数
-        cnt1 = water_level_int % 10;  // 个位数
-    end
-	 
+	
 	 
 	 
 	 
